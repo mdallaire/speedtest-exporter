@@ -17,13 +17,7 @@ jobs:
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
+          
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
@@ -43,7 +37,5 @@ jobs:
           platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
           push: true
           tags: | 
-            miguelndecarvalho/speedtest-exporter:latest
-            miguelndecarvalho/speedtest-exporter:${{ steps.tag.outputs.tag }}
-            ghcr.io/miguelndecarvalho/speedtest-exporter:latest
-            ghcr.io/miguelndecarvalho/speedtest-exporter:${{ steps.tag.outputs.tag }}
+            ghcr.io/mdallaire/speedtest-exporter:latest
+            ghcr.io/mdallaire/speedtest-exporter:${{ steps.tag.outputs.tag }}
